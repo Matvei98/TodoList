@@ -1,13 +1,13 @@
 import {useState,useEffect,useRef} from 'react';
 import { TodoList } from './TodoList';
 import { ITodo } from '../types/data';
-
-
+import { Button } from 'antd';
+import type { SizeType } from 'antd/es/config-provider/SizeContext';
 const App:React.FC = () =>{
 const [value,setValue] = useState('');
 const [todos,setTodos] = useState<ITodo[]>([]);
 const inputRef = useRef<HTMLInputElement>(null);
-
+const [size, setSize] = useState<SizeType>('small');
 const handleChange:React.ChangeEventHandler<HTMLInputElement> = (e) =>{
 setValue(e.target.value);
 }
@@ -41,8 +41,8 @@ if(inputRef.current) inputRef.current.focus();
  },[]);
  return <div>
 <div>
-<input value={value} onChange={handleChange} onKeyDown={handleKeyDown} ref={inputRef}/>
-<button onClick={addTodo}>Add</button>
+<input value={value}  onChange={handleChange} onKeyDown={handleKeyDown} ref={inputRef}/>
+<Button type="primary" onClick={addTodo} size={size}>Add</Button>
 </div>
 <TodoList items={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
 </div>
