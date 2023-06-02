@@ -7,7 +7,7 @@ const App:React.FC = () =>{
 const [value,setValue] = useState('');
 const [todos,setTodos] = useState<ITodo[]>([]);
 const inputRef = useRef<HTMLInputElement>(null);
-const [size, setSize] = useState<SizeType>('small');
+const [size] = useState<SizeType>('small');
 const handleChange:React.ChangeEventHandler<HTMLInputElement> = (e) =>{
 setValue(e.target.value);
 }
